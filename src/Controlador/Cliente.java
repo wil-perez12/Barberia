@@ -8,6 +8,15 @@ package Controlador;
  *
  * @author Admin
  */
-public class Cliente {
-    
+public class Cliente extends Usuario {
+
+    public Cliente(String nombre, String apellido, String correo, String telefono, String contraseña) {
+        super(nombre, apellido, correo, telefono, contraseña, "Cliente");
+    }
+
+    // Método para agendar cita
+    public void agendarCita() {
+        System.out.println("Cita agendada por el cliente " + nombre);
+    }
 }
+
