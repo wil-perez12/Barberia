@@ -1,10 +1,13 @@
+
+import Controlador.Usuario;
+
 public class Empleado extends Usuario {
 
     private String rango;
     private String horario;
 
     public Empleado(String nombre, String apellido, String correo, String telefono, String contraseña, String rango, String horario) {
-        super(nombre, apellido, correo, telefono, contraseña, "Empleado");
+        super(nombre, apellido, correo, telefono, contraseña, telefono);
         this.rango = rango;
         this.horario = horario;
     }
@@ -35,6 +38,13 @@ return horario;
 
 
 }
+
+    @Override
+    public String getTipoUsuario() {
+        
+        return "empleado";
+        
+    }
 
 
 

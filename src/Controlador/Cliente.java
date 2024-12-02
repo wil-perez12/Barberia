@@ -10,13 +10,18 @@ package Controlador;
  */
 public class Cliente extends Usuario {
 
-    public Cliente(String nombre, String apellido, String correo, String telefono, String contraseña) {
-        super(nombre, apellido, correo, telefono, contraseña, "Cliente");
+    public Cliente(String nombre, String apellido, String correo, String telefono, String contraseña, String nivelAcceso) {
+        super(nombre, apellido, correo, telefono, contraseña, nivelAcceso);
     }
 
     // Método para agendar cita
     public void agendarCita() {
         System.out.println("Cita agendada por el cliente " + nombre);
+    }
+
+    @Override
+    public String getTipoUsuario() {
+        return "cliente";
     }
 }
 

@@ -14,14 +14,18 @@ public abstract class Usuario {
     protected String correo;
     protected String telefono;
     protected String contrasena;
+    protected String nivelAcceso;
 
-    public Usuario(String nombre, String apellido, String correo, String telefono, String contrasena) {
+    public Usuario(String nombre, String apellido, String correo, String telefono, String contrasena,String nivelAcceso) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
         this.telefono = telefono;
         this.contrasena = contrasena;
+        this.nivelAcceso = nivelAcceso;
     }
+
+  
 
     // Métodos Getters y Setters
     public String getNombre() {
