@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package vistas.Cliente;
+package vistas.Empleado;
 
+import vistas.Cliente.*;
 import java.awt.BorderLayout;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -11,10 +12,10 @@ import java.util.Locale;
 import javax.swing.JPanel;
 
 
-public class DashboardCliente extends javax.swing.JFrame {
+public class DashboardEmpleado extends javax.swing.JFrame {
 
     
-    public DashboardCliente() {
+    public DashboardEmpleado() {
         initComponents();
         setFecha();
         MostrarVista(new home());
@@ -53,7 +54,6 @@ public class DashboardCliente extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         btnHome = new javax.swing.JButton();
         btnAgendarCita = new javax.swing.JButton();
-        btnCortes = new javax.swing.JButton();
         btnPerfil = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         txtFecha = new javax.swing.JLabel();
@@ -91,7 +91,7 @@ public class DashboardCliente extends javax.swing.JFrame {
         btnAgendarCita.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
         btnAgendarCita.setForeground(new java.awt.Color(255, 255, 255));
         btnAgendarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/img-agendar.png"))); // NOI18N
-        btnAgendarCita.setText("   Agendar Cita                    ");
+        btnAgendarCita.setText("   Citas Pendientes             ");
         btnAgendarCita.setBorder(null);
         btnAgendarCita.setBorderPainted(false);
         btnAgendarCita.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,21 +99,6 @@ public class DashboardCliente extends javax.swing.JFrame {
         btnAgendarCita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgendarCitaActionPerformed(evt);
-            }
-        });
-
-        btnCortes.setBackground(new java.awt.Color(30, 144, 255));
-        btnCortes.setFont(new java.awt.Font("Georgia", 1, 14)); // NOI18N
-        btnCortes.setForeground(new java.awt.Color(255, 255, 255));
-        btnCortes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/img-barba_cliente.png"))); // NOI18N
-        btnCortes.setText("   Cortes                                  ");
-        btnCortes.setBorder(null);
-        btnCortes.setBorderPainted(false);
-        btnCortes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnCortes.setFocusPainted(false);
-        btnCortes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCortesActionPerformed(evt);
             }
         });
 
@@ -147,7 +132,6 @@ public class DashboardCliente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(btnAgendarCita, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
             .addComponent(btnPerfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnCortes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnHome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         menuLayout.setVerticalGroup(
@@ -164,13 +148,11 @@ public class DashboardCliente extends javax.swing.JFrame {
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(68, 68, 68)
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(btnAgendarCita, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btnCortes, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(27, 27, 27)
                 .addComponent(btnPerfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         header.setBackground(new java.awt.Color(30, 144, 255));
@@ -258,23 +240,21 @@ public class DashboardCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAgendarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgendarCitaActionPerformed
-        MostrarVista(new agendarCita());
+       MostrarVista(new CitasPendientes());
     }//GEN-LAST:event_btnAgendarCitaActionPerformed
 
-    private void btnCortesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCortesActionPerformed
-        MostrarVista(new Menu());
-    }//GEN-LAST:event_btnCortesActionPerformed
-
     private void btnPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPerfilActionPerformed
-        MostrarVista(new perfil());
+        MostrarVista(new perfilEmpleado());
     }//GEN-LAST:event_btnPerfilActionPerformed
 
-    
+    /**
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DashboardCliente().setVisible(true);
+                new DashboardEmpleado().setVisible(true);
             }
         });
     }
@@ -282,7 +262,6 @@ public class DashboardCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel background;
     private javax.swing.JButton btnAgendarCita;
-    private javax.swing.JButton btnCortes;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnPerfil;
     private javax.swing.JPanel header;

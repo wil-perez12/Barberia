@@ -4,6 +4,12 @@
  */
 package vistas;
 
+import Conexion.Conexion;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import vistas.Loggin;
+import java.sql.SQLException;
 
 public class Registro extends javax.swing.JFrame {
     public static Loggin Lg;
@@ -141,6 +147,11 @@ public class Registro extends javax.swing.JFrame {
         btnRegistrar.setForeground(new java.awt.Color(0, 0, 0));
         btnRegistrar.setText("Registrar");
         btnRegistrar.setBorderPainted(false);
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         jLabel11.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         jLabel11.setText("Nombre");
@@ -293,6 +304,56 @@ public class Registro extends javax.swing.JFrame {
         //esconde el registro y solo muestra el loggin 
         setVisible(false);
     }//GEN-LAST:event_btnISesionActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+         // Obtener los valores de los campos de texto
+         String nombre = txtName.getText();
+         String apellido = txtApellido.getText();
+         String telefono = txtTelefono.getText();
+         String correo = txtCorreo.getText();
+         String pass = new String(txtPass.getPassword());
+         
+         // Validar que los campos no estén vacíos
+        if (nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty() || correo.isEmpty() || pass.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.");
+        return; }
+        
+         // Cree la consulta SQL para insertar los datos en la base de datos
+        String query = "INSERT INTO usuario (nombre, apellido, telefono, correo, contraseña,tipo_de_acceso) VALUES (?, ?, ?, ?, ?,'cliente')";
+
+        // Conectar a la base de datos 
+        Conexion con = new Conexion();
+        Connection connection = con.conectar(); 
+        
+        try {
+            // Preparar la sentencia SQL
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setString(1, nombre);
+            ps.setString(2, apellido);
+            ps.setString(3, telefono);
+            ps.setString(4, correo);
+            ps.setString(5, pass); 
+        
+            // Ejecutar la actualización
+            int resultado = ps.executeUpdate();
+
+        if (resultado > 0) {
+            // Si la agregacion fue exitosa, mostrar mensaje
+            JOptionPane.showMessageDialog(null, "Registro exitoso.");
+        } else {
+            // Si no se insertaron datos
+            JOptionPane.showMessageDialog(null, "Error al registrar. Intente nuevamente.");
+        }
+
+        // Cerrar la conexión
+        con.desconectar();
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al conectar con la base de datos: " + e.getMessage());
+    }
+
+    
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     
     public static void main(String args[]) {

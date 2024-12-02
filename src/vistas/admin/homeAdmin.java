@@ -2,18 +2,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas.Cliente;
+package vistas.admin;
+
+import vistas.Cliente.*;
 
 /**
  *
  * @author Admin
  */
-public class home extends javax.swing.JPanel {
+public class homeAdmin extends javax.swing.JPanel {
 
     /**
      * Creates new form home
      */
-    public home() {
+    public homeAdmin() {
         initComponents();
     }
 
