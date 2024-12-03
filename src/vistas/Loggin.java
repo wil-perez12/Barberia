@@ -19,7 +19,9 @@ public class Loggin extends javax.swing.JFrame {
     //instancia del formulario Registro
     public static Registro registrar;
     
+    //instancia clase conexion
     Conexion con = new Conexion();
+    
     public Loggin() {
         initComponents();
     }

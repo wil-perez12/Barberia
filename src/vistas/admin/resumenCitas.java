@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package vistas.Empleado;
+package vistas.admin;
 
+import vistas.Empleado.*;
 import Conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,10 +18,10 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Admin
  */
-public class CitasPendientes extends javax.swing.JPanel {
+public class resumenCitas extends javax.swing.JPanel {
     DefaultTableModel dtm = new DefaultTableModel();
     Conexion con = new Conexion();
-    public CitasPendientes() {
+    public resumenCitas() {
         initComponents();
         cargarCitasPendientes();
     }
@@ -51,7 +52,7 @@ public class CitasPendientes extends javax.swing.JPanel {
             String corte = rs.getString("corte");
             String hora = rs.getString("hora");
             double precio = rs.getDouble("precio");
-            System.out.println("Nombre: " + nombre + ", Corte: " + corte + ", Hora: " + hora + ", Precio: " + precio);
+            
             // Agregar fila al modelo
             String indices []={"Cliente","Corte","Hora","Precio"};
             dtm.setColumnIdentifiers(indices);
@@ -109,7 +110,7 @@ public class CitasPendientes extends javax.swing.JPanel {
 
         btnRealizada.setBackground(new java.awt.Color(0, 0, 0));
         btnRealizada.setForeground(new java.awt.Color(255, 255, 255));
-        btnRealizada.setText("Realizada");
+        btnRealizada.setText("Eliminar");
         btnRealizada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         btnRealizada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
